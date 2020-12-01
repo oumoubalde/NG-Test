@@ -1,0 +1,41 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+// Override Variable Defaults
+
+$theme-colors: (
+  "primary": #009cde,
+  "light": rgb(#009cde, 0.4),
+  "secondary": #dadada,
+);
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .border#{$infix}-top {      border-top: $border-width solid $border-color ; }
+    .border#{$infix}-right {    border-right: $border-width solid $border-color ; }
+    .border#{$infix}-bottom {   border-bottom: $border-width solid $border-color ; }
+    .border#{$infix}-left {     border-left: $border-width solid $border-color ; }
+
+    .border#{$infix}-top-0 {    border-top: 0 !important; }
+    .border#{$infix}-right-0 {  border-right: 0 !important; }
+    .border#{$infix}-bottom-0 { border-bottom: 0 !important; }
+    .border#{$infix}-left-0 {   border-left: 0 !important; }
+
+    .border#{$infix}-x {
+      border-left: $border-width solid $border-color ;
+      border-right: $border-width solid $border-color ;
+    }
+
+    .border#{$infix}-y {
+      border-top: $border-width solid $border-color ;
+      border-bottom: $border-width solid $border-color ;
+    }
+  }
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Extend/Override Classes.

@@ -1,0 +1,18 @@
+$sizes: (25: 25%, 50: 50%, 75: 75%, 100: 100%);
+$operations: 'min', 'max';
+$dimensions_map: ('h': 'height', 'w': 'width');
+
+@each $operation in $operations {
+  @each $short, $dimension in $dimensions_map {
+    .#{$operation}-#{$short}-content{
+      #{$operation}-#{$dimension}: #{$operation}-content;
+    }
+
+    @each $size, $percent in $sizes {
+      .#{$operation}-#{$short}-#{$size}{
+        #{$operation}-#{$dimension}: $percent;
+      }
+    }
+
+  }
+}
